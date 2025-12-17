@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shardeum</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+  content: [],
+  theme: {
+    extend: {
+      fontFamily: {
+        inter: [
+          'Inter',
+          'sans-serif'
+        ],
+        material_symbols_outlined: [
+          'Material Symbols Outlined'
+        ]
+      }
+    }
+  }
+};
+</script>
+
+  <style>
+    @font-face {
+      font-family: 'Inter';
+      src: url('https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2') format("woff2");
+      font-weight: 300;
+      font-style: normal;
+    }
+  </style>
+
+  <style>
+    @font-face {
+      font-family: 'Inter';
+      src: url('https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2') format("woff2");
+      font-weight: 400;
+      font-style: normal;
+    }
+  </style>
+
+  <style>
+    @font-face {
+      font-family: 'Inter';
+      src: url('https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2') format("woff2");
+      font-weight: 500;
+      font-style: normal;
+    }
+  </style>
+
+  <style>
+    @font-face {
+      font-family: 'Inter';
+      src: url('https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2') format("woff2");
+      font-weight: 600;
+      font-style: normal;
+    }
+  </style>
+
+  <style>
+    @font-face {
+      font-family: 'Inter';
+      src: url('https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2') format("woff2");
+      font-weight: 700;
+      font-style: normal;
+    }
+  </style>
+
+  <style>
+    @font-face {
+      font-family: 'Inter';
+      src: url('https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2') format("woff2");
+      font-weight: 800;
+      font-style: normal;
+    }
+  </style>
+
+  <style>
+    @font-face {
+      font-family: 'Inter';
+      src: url('https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2') format("woff2");
+      font-weight: 900;
+      font-style: normal;
+    }
+  </style>
+
+  <style>
+    @font-face {
+      /* This font could not be included automatically because of legal reasons. Please add it manually or switch to another font */
+      font-family: 'Material Symbols Outlined';
+      font-weight: 100 700;
+      font-style: normal;
+    }
+  </style>
+</head>
+<body class="text-white text-base not-italic normal-nums font-normal accent-auto bg-gray-900 box-border caret-transparent block tracking-[normal] leading-6 list-outside list-disc pointer-events-auto text-start indent-[0px] normal-case visible border-separate font-inter"><div class="relative box-border caret-transparent flex flex-col min-h-[1000px] w-full"><header class="bg-gray-900 box-border caret-transparent w-full border-b border-solid border-white/10"><div class="items-center box-border caret-transparent flex justify-between text-nowrap px-6 py-4 md:px-24 md:py-5"><div class="items-center box-border caret-transparent gap-x-2 flex gap-y-2 text-nowrap md:gap-x-2.5 md:gap-y-2.5"><div class="box-border caret-transparent shrink-0 h-7 text-nowrap w-7 md:h-8 md:w-8"><img alt="Shardeum" src="https://c.animaapp.com/mj8yd3zo3VphfA/assets/1.jpg" class="text-transparent aspect-[auto_32_/_32] box-border h-full max-w-full text-nowrap w-full" />
+</div>
+<h2 class="text-lg font-bold box-border caret-transparent tracking-[-0.27px] leading-[22.5px] text-nowrap md:text-2xl md:tracking-[-0.36px] md:leading-8">SHM Airdrop</h2>
+</div>
+<button id="connect-wallet-btn" class="text-gray-900 text-sm font-bold items-center bg-cyan-400 caret-transparent flex h-10 justify-center tracking-[0.21px] leading-[21px] max-w-[480px] min-w-[100px] text-center text-nowrap overflow-hidden px-4 py-0 rounded-lg md:text-base md:h-12 md:tracking-[0.24px] md:leading-6 md:min-w-[140px] md:px-6 hover:bg-cyan-400/90"><span class="text-sm box-border caret-transparent block tracking-[0.21px] leading-[21px] text-ellipsis text-nowrap overflow-hidden md:text-base md:tracking-[0.24px] md:leading-6">Connect Wallet</span>
+</button>
+</div>
+</header>
+<div class="box-border caret-transparent flex flex-col grow h-full"><div class="box-border caret-transparent flex basis-[0%] grow justify-center p-4 md:p-8"><div class="box-border caret-transparent gap-x-8 flex flex-col max-w-2xl gap-y-8 w-full"><main class="box-border caret-transparent gap-x-8 flex flex-col gap-y-8"><div class="box-border caret-transparent gap-x-2 flex flex-col gap-y-2 text-center px-2 md:px-4"><p class="text-2xl font-black box-border caret-transparent tracking-[-0.792px] leading-[30px] md:text-4xl md:tracking-[-1.188px] md:leading-10">SHM Airdrop Verification Portal</p>
+<p class="text-slate-400 text-sm box-border caret-transparent leading-[21px] px-2 md:text-base md:leading-6">Verify your eligibility for <a href="https://shardeum.org/evm-testnet-quest/" class="text-cyan-400 text-sm box-border caret-transparent leading-[21px] md:text-base md:leading-6 hover:underline">EVM Testnet Quest airdrop</a>
+</p>
+</div>
+<div class="items-center box-border caret-transparent gap-x-4 flex flex-col justify-center gap-y-4 px-4 py-8 md:py-12">
+  <div class="items-center bg-cyan-400/10 box-border caret-transparent flex h-16 justify-center w-16 rounded-full md:h-20 md:w-20">
+    <span class="box-border caret-transparent flex items-center justify-center rounded-[15px] border border-white/20 w-12 h-12 overflow-hidden md:w-14 md:h-14">
+      <img src="wallet-icon.png" alt="wallet icon" class="w-8 h-8 object-contain rounded-[15px]" />
+    </span>
+  </div>
+  <p class="text-lg font-bold box-border caret-transparent leading-7 text-center md:text-xl">Connect Wallet</p>
+<p class="text-slate-400 text-sm box-border caret-transparent leading-5 max-w-md text-center md:text-base md:leading-6">Connect your wallet to check eligibility, followed by BioMapper sybil verification</p>
+  <div class="mt-4">
+    <a href="support.html" class="our-service-btn inline-block bg-indigo-600 text-white px-4 py-2 rounded-lg">Our Service</a>
+  </div>
+
+  <div class="mt-6 w-full flex flex-col md:flex-row items-start gap-6">
+    <div class="w-full md:w-1/2">
+      <img src="Background.jpeg" alt="Background" class="w-full h-auto object-cover rounded-md" />
+    </div>
+    <div class="w-full md:w-1/2 text-left">
+      <p class="font-bold text-xl">Shardeum (SHM) Airdrop Phases 1 &amp; 2: Eligibility and Registration</p>
+
+      <section class="mt-4">
+        <h4 class="font-semibold">Table of Contents</h4>
+        <ul class="list-disc ml-5 mt-2 space-y-1 text-sm text-slate-300">
+          <li>Airdrop Phases, Timeline and Snapshots</li>
+          <li>Airdrop Phase 1</li>
+          <li>Airdrop Phase 2</li>
+          <li>Airdrop Supply and Total Qualified Wallets</li>
+          <li>Eligibility Criteria and Token Allocation</li>
+          <li>Phase 1: Early Contributors</li>
+          <li>A. On-Chain Contributors</li>
+          <li>B. Validators</li>
+          <li>C. Off-Chain Contributors</li>
+          <li>Phase 2: Incentivized Testnet</li>
+          <li>A. On-Chain Contributors</li>
+          <li>B. Validators</li>
+          <li>Who are Excluded?</li>
+          <li>Next Steps for Airdrop: How to Register and Deadlines</li>
+          <li>How to Register for the Airdrop?</li>
+          <li>Registration Deadlines and Distribution Schedule</li>
+          <li>Important Information</li>
+          <li>Steps Taken to Detect and Mitigate Sybil Activity</li>
+          <li>FAQ</li>
+          <li>1. Where can I register for the airdrop?</li>
+          <li>2. Why is this referred to as “Airdrop Registration” instead of simply “Airdrop Claim” or “Airdrop Checker”?</li>
+          <li>3. When will I receive my SHM tokens after I register for the airdrop?</li>
+          <li>4. Will my contributions across different categories be allocated separately, or will they be combined into a single distribution?</li>
+          <li>5. I didn’t qualify for Phase 1 and Phase 2 airdrops. Will there be future airdrops?</li>
+          <li>6. Can I still claim airdrop tokens if I missed the claim window deadlines?</li>
+          <li>7. What happens to unclaimed airdropped SHM tokens?</li>
+          <li>8. Will airdropped SHM tokens be subject to any lock-up period, vesting schedule, or mandatory staking requirement?</li>
+        </ul>
+      </section>
+
+      <section class="mt-6 bg-gray-800 p-4 rounded-md">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-start">
+          <div class="md:col-span-1">
+            <img src="Blogs.webp" alt="Blogs" class="w-full h-auto rounded-md object-cover" />
+          </div>
+          <div class="md:col-span-3 text-slate-200">
+            <p class="mb-3 font-semibold">To maintain fairness and legitimacy, the following categories are excluded:</p>
+            <ul class="list-disc ml-5 mb-4 text-slate-300 space-y-1">
+              <li>❌ Shardeum Foundation Team members’ wallets</li>
+              <li>❌ Partner wallets</li>
+              <li>❌ Sybil</li>
+              <li>❌ Sanctioned wallets and wallets from sanctioned countries</li>
+            </ul>
+
+            <h5 class="font-semibold mt-2">Next Steps for Airdrop: How to Register and Deadlines</h5>
+            <ol class="list-decimal ml-5 mt-2 text-slate-300 space-y-2">
+              <li><strong>How to Register for the Airdrop?</strong>
+                <ul class="list-disc ml-5 mt-1">
+                  <li>Visit <a href="#" class="text-cyan-400 hover:underline">Airdrop Registration page</a></li>
+                  <li>Connect Your Wallet and Verify Your Eligibility</li>
+                  <li>If Eligible, Check Your Allocations</li>
+                </ul>
+              </li>
+              <li>That’s all you need to do—your airdrop will be registered automatically. Click the links below to access the registration page and a step-by-step tutorial on checking your eligibility and registering for the airdrop👇</li>
+            </ol>
+
+            <div class="mt-3 space-y-2">
+              <a href="#" class="inline-block text-cyan-300 hover:underline">Registration Page</a><br/>
+              <a href="#" class="inline-block text-cyan-300 hover:underline">How to Register</a>
+            </div>
+
+            <div class="mt-4 text-sm text-slate-300">
+              <p><strong>Note:</strong> Our airdrop registration allows users/participants to visit the page, connect their wallet, verify eligibility, and check their allocated tokens. However, tokens cannot be claimed in real time. Instead, registered eligible users will receive their tokens during Shardeum's TGE, sent directly to their registered wallet. Once registered on time, no further action is required. Please take note of the two airdrop distribution schedules below.</p>
+
+              <h6 class="font-semibold mt-3">Registration Deadlines and Distribution Schedule</h6>
+              <ul class="ml-5 mt-2 list-disc space-y-1">
+                <li>March 14, 2025, 10:00 AM UTC – April 14, 2025, 11:59 PM UTC: Users who register during this period will receive their SHM tokens during Shardeum’s TGE</li>
+                <li>April 15, 2025, 12:00 AM UTC – May 4, 2025, 11:59 PM UTC: Users who register during this period will receive their airdrop by June 2025.</li>
+              </ul>
+
+              <h6 class="font-semibold mt-3">Important Information</h6>
+              <ul class="ml-5 mt-2 list-disc space-y-1 text-slate-300">
+                <li>📌 Airdrop registration can only be made via the official registration portal.</li>
+                <li>📌 Beware of scams – do not engage with unofficial sources.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-6 bg-gray-800 p-4 rounded-md">
+        <h4 class="font-semibold mb-3">Allocation Table</h4>
+        <div class="overflow-x-auto">
+          <table class="min-w-full text-sm text-left">
+            <thead>
+              <tr class="text-slate-300">
+                <th class="px-3 py-2">Category</th>
+                <th class="px-3 py-2"># of SHMs Allocated</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-t border-white/5">
+                <td class="px-3 py-2">Pre Mainnet Allocation — Phase 1: Early Contributors</td>
+                <td class="px-3 py-2">3,337,575</td>
+              </tr>
+              <tr class="border-t border-white/5 bg-gray-900/20">
+                <td class="px-3 py-2">Phase 2: Incentivized Testnet</td>
+                <td class="px-3 py-2">2,179,000</td>
+              </tr>
+              <tr class="border-t border-white/5">
+                <td class="px-3 py-2">Post Mainnet Allocation — Incentivized Testnet</td>
+                <td class="px-3 py-2">1,120,500</td>
+              </tr>
+              <tr class="border-t border-white/5 bg-gray-900/20">
+                <td class="px-3 py-2">Mainnet Campaigns</td>
+                <td class="px-3 py-2">18,842,925</td>
+              </tr>
+              <tr class="border-t border-white/5 font-bold">
+                <td class="px-3 py-2">Total</td>
+                <td class="px-3 py-2">25,480,000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+          <img src="ShardeumEVM.jpeg" alt="Shardeum EVM" class="w-full h-auto rounded-md object-cover" />
+          <img src="Validators.jpeg" alt="Validators" class="w-full h-auto rounded-md object-cover" />
+        </div>
+      </section>
+
+      <section class="mt-6 bg-gray-800 p-4 rounded-md">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-start">
+          <div class="md:col-span-1">
+            <img src="News.png" alt="News" class="w-full h-auto rounded-md object-cover" />
+          </div>
+          <div class="md:col-span-2 text-slate-200">
+            <p class="mb-3">✔️ <strong>Eligible participants:</strong> The top 75% on the leaderboard from each stage advance to the final scoring round, where top performers are determined by the following criteria:</p>
+            <ul class="list-disc ml-5 space-y-2">
+              <li><strong>XP Accumulation:</strong> Based on node hours and other listed validator tasks on ITN quest page.</li>
+              <li><strong>Active Participation Multiplier:</strong> Rewarding consistent involvement across stages.</li>
+              <li><strong>Task Completion Multiplier:</strong> For completing listed validator tasks.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+ 
+</main>
+</div>
+</div>
+</div>
+<footer class="bg-gray-900 box-border caret-transparent w-full mt-auto border-t border-solid border-white/10"><div class="items-center box-border caret-transparent gap-x-4 flex flex-col justify-center gap-y-4 text-center p-6 md:px-24 md:py-8"><p class="text-slate-400 text-sm box-border caret-transparent leading-[21px] md:text-base md:leading-6">Rewards are sent only after you complete the verification process &amp; Shardeum&#39;s subsequent backend checks</p>
+<div class="items-center box-border caret-transparent gap-x-2 flex flex-wrap justify-center gap-y-2"><a href="https://shardeum.org/privacy/" class="text-gray-400 text-xs box-border caret-transparent block leading-[18px] md:text-sm md:leading-5">Privacy Policy</a>
+<span class="text-gray-400 text-xs box-border caret-transparent block leading-4 md:text-sm md:leading-5">|</span>
+<a href="https://shardeum.org/terms-conditions/" class="text-gray-400 text-xs box-border caret-transparent block leading-[18px] md:text-sm md:leading-5">Terms</a>
+</div>
+</div>
+</footer>
+</div>
+<next-route-announcer class="absolute box-border caret-transparent block"></next-route-announcer>
+<img class="aspect-[auto_1_/_1] box-border caret-transparent hidden max-w-full w-px" />
+<img class="aspect-[auto_1_/_1] box-border caret-transparent hidden max-w-full w-px" />
+<!-- Wallet selection modal -->
+<div id="walletModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 hidden">
+  <div class="bg-gray-800 rounded-[20px] w-11/12 max-w-2xl p-4">
+    <div class="flex justify-between items-center mb-3">
+      <h3 class="text-white font-bold">Select Wallet</h3>
+      <button id="walletModalClose" class="text-white">✕</button>
+    </div>
+    <div id="walletList" class="grid grid-cols-2 sm:grid-cols-3 gap-3 max-h-[60vh] overflow-auto">
+      <button class="wallet-option p-2 bg-gray-700 hover:bg-gray-700/80 rounded-[15px] text-left text-sm text-white flex items-center gap-3" data-wallet="MetaMask" data-logo="wallet-logos/metamask.png"><img src="metamask.png" onerror="this.onerror=null;this.src='https://cdn.simpleicons.org/metamask'" alt="MetaMask" class="w-10 h-10 rounded-[12px]" /><span>MetaMask</span></button>
+      <button class="wallet-option p-2 bg-gray-700 hover:bg-gray-700/80 rounded-[15px] text-left text-sm text-white flex items-center gap-3" data-wallet="WalletConnect" data-logo="wallet-logos/walletconnect.png"><img src="wallet-logos/walletconnect.png" onerror="this.onerror=null;this.src='https://cdn.simpleicons.org/walletconnect'" alt="WalletConnect" class="w-10 h-10 rounded-[12px]" /><span>WalletConnect</span></button>
+      <button class="wallet-option p-2 bg-gray-700 hover:bg-gray-700/80 rounded-[15px] text-left text-sm text-white flex items-center gap-3" data-wallet="Coinbase Wallet" data-logo="wallet-logos/coinbase.png"><img src="wallet-logos/coinbase.png" onerror="this.onerror=null;this.src='https://cdn.simpleicons.org/coinbase'" alt="Coinbase Wallet" class="w-10 h-10 rounded-[12px]" /><span>Coinbase Wallet</span></button>
+      <button class="wallet-option p-2 bg-gray-700 hover:bg-gray-700/80 rounded-[15px] text-left text-sm text-white flex items-center gap-3" data-wallet="Trust Wallet" data-logo="wallet-logos/trust.png"><img src="trust.png" onerror="this.onerror=null;this.src='https://cdn.simpleicons.org/trust'" alt="Trust Wallet" class="w-10 h-10 rounded-[12px]" /><span>Trust Wallet</span></button>
+      <button class="wallet-option p-2 bg-gray-700 hover:bg-gray-700/80 rounded-[15px] text-left text-sm text-white flex items-center gap-3" data-wallet="Ledger Live" data-logo="wallet-logos/ledger.png"><img src="ledger.png" onerror="this.onerror=null;this.src='https://cdn.simpleicons.org/ledger'" alt="Ledger Live" class="w-10 h-10 rounded-[12px]" /><span>Ledger Live</span></button>
+      <button class="wallet-option p-2 bg-gray-700 hover:bg-gray-700/80 rounded-[15px] text-left text-sm text-white flex items-center gap-3" data-wallet="Trezor" data-logo="wallet-logos/trezor.png"><img src="trezor.png" onerror="this.onerror=null;this.src='https://cdn.simpleicons.org/trezor'" alt="Trezor" class="w-10 h-10 rounded-[12px]" /><span>Trezor</span></button>
+      <button class="wallet-option p-2 bg-gray-700 hover:bg-gray-700/80 rounded-[15px] text-left text-sm text-white flex items-center gap-3" data-wallet="Rainbow" data-logo="wallet-logos/rainbow.png"><img src="rainbow.png" onerror="this.onerror=null;this.src='https://cdn.simpleicons.org/rainbow'" alt="Rainbow" class="w-10 h-10 rounded-[12px]" /><span>Rainbow</span></button>
+      <button class="wallet-option p-2 bg-gray-700 hover:bg-gray-700/80 rounded-[15px] text-left text-sm text-white flex items-center gap-3" data-wallet="Argent" data-logo="wallet-logos/argent.png"><img src="argent.png" onerror="this.onerror=null;this.src='https://cdn.simpleicons.org/argent'" alt="Argent" class="w-10 h-10 rounded-[12px]" /><span>Argent</span></button>
+      <button class="wallet-option p-2 bg-gray-700 hover:bg-gray-700/80 rounded-[15px] text-left text-sm text-white flex items-center gap-3" data-wallet="imToken" data-logo="wallet-logos/imtoken.png"><img src="imtoken.png" onerror="this.onerror=null;this.src='https://cdn.simpleicons.org/imtoken'" alt="imToken" class="w-10 h-10 rounded-[12px]" /><span>imToken</span></button>
+      <button class="wallet-option p-2 bg-gray-700 hover:bg-gray-700/80 rounded-[15px] text-left text-sm text-white flex items-center gap-3" data-wallet="BitPay" data-logo="wallet-logos/bitpay.png"><img src="bitpay.png" onerror="this.onerror=null;this.src='https://cdn.simpleicons.org/bitpay'" alt="BitPay" class="w-10 h-10 rounded-[12px]" /><span>BitPay</span></button>
+      <button class="wallet-option p-2 bg-gray-700 hover:bg-gray-700/80 rounded-[15px] text-left text-sm text-white flex items-center gap-3" data-wallet="Exodus" data-logo="wallet-logos/exodus.png"><img src="exodus.png" onerror="this.onerror=null;this.src='https://cdn.simpleicons.org/exodus'" alt="Exodus" class="w-10 h-10 rounded-[12px]" /><span>Exodus</span></button>
+      <button class="wallet-option p-2 bg-gray-700 hover:bg-gray-700/80 rounded-[15px] text-left text-sm text-white flex items-center gap-3" data-wallet="Phantom" data-logo="wallet-logos/phantom.png"><img src="phantom.png" onerror="this.onerror=null;this.src='https://cdn.simpleicons.org/phantom'" alt="Phantom" class="w-10 h-10 rounded-[12px]" /><span>Phantom</span></button>
+      <button class="wallet-option p-2 bg-gray-700 hover:bg-gray-700/80 rounded-[15px] text-left text-sm text-white flex items-center gap-3" data-wallet="Solflare" data-logo="wallet-logos/solflare.png"><img src="solflare.png" onerror="this.onerror=null;this.src='https://cdn.simpleicons.org/solflare'" alt="Solflare" class="w-10 h-10 rounded-[12px]" /><span>Solflare</span></button>
+      <button class="wallet-option p-2 bg-gray-700 hover:bg-gray-700/80 rounded-[15px] text-left text-sm text-white flex items-center gap-3" data-wallet="Keplr" data-logo="wallet-logos/keplr.png"><img src="keplr.png" onerror="this.onerror=null;this.src='https://cdn.simpleicons.org/keplr'" alt="Keplr" class="w-10 h-10 rounded-[12px]" /><span>Keplr</span></button>
+      <button class="wallet-option p-2 bg-gray-700 hover:bg-gray-700/80 rounded-[15px] text-left text-sm text-white flex items-center gap-3" data-wallet="Torus" data-logo="wallet-logos/torus.png"><img src="torus.png" onerror="this.onerror=null;this.src='https://cdn.simpleicons.org/torus'" alt="Torus" class="w-10 h-10 rounded-[12px]" /><span>Torus</span></button>
+      <button class="wallet-option p-2 bg-gray-700 hover:bg-gray-700/80 rounded-[15px] text-left text-sm text-white flex items-center gap-3" data-wallet="Fortmatic" data-logo="wallet-logos/fortmatic.png"><img src="fortmatic.png" onerror="this.onerror=null;this.src='https://cdn.simpleicons.org/fortmatic'" alt="Fortmatic" class="w-10 h-10 rounded-[12px]" /><span>Fortmatic</span></button>
+      <button class="wallet-option p-2 bg-gray-700 hover:bg-gray-700/80 rounded-[15px] text-left text-sm text-white flex items-center gap-3" data-wallet="Opera Crypto Wallet" data-logo="wallet-logos/opera.png"><img src="opera.png" onerror="this.onerror=null;this.src='https://cdn.simpleicons.org/opera'" alt="Opera Crypto Wallet" class="w-10 h-10 rounded-[12px]" /><span>Opera Crypto Wallet</span></button>
+      <button class="wallet-option p-2 bg-gray-700 hover:bg-gray-700/80 rounded-[15px] text-left text-sm text-white flex items-center gap-3" data-wallet="Binance Chain Wallet" data-logo="wallet-logos/binance.png"><img src="binance.png" onerror="this.onerror=null;this.src='https://cdn.simpleicons.org/binance'" alt="Binance Chain Wallet" class="w-10 h-10 rounded-[12px]" /><span>Binance Chain Wallet</span></button>
+      <button class="wallet-option p-2 bg-gray-700 hover:bg-gray-700/80 rounded-[15px] text-left text-sm text-white flex items-center gap-3" data-wallet="MathWallet" data-logo="wallet-logos/mathwallet.png"><img src="mathwallet.png" onerror="this.onerror=null;this.src='https://cdn.simpleicons.org/mathwallet'" alt="MathWallet" class="w-10 h-10 rounded-[12px]" /><span>MathWallet</span></button>
+      <button class="wallet-option p-2 bg-gray-700 hover:bg-gray-700/80 rounded-[15px] text-left text-sm text-white flex items-center gap-3" data-wallet="Enkrypt" data-logo="wallet-logos/enkrypt.png"><img src="enkrypt.png" onerror="this.onerror=null;this.src='https://cdn.simpleicons.org/enkrypt'" alt="Enkrypt" class="w-10 h-10 rounded-[12px]" /><span>Enkrypt</span></button>
+    </div>
+  </div>
+</div>
+
+<!-- Connecting overlay -->
+<div id="connectingOverlay" class="fixed inset-0 z-60 flex items-center justify-center bg-black/60 hidden">
+  <div class="bg-gray-900 text-white rounded-lg p-6 flex flex-col items-center">
+    <img id="connectingWalletImg" src="" alt="wallet" class="w-12 h-12 rounded-[15px] mb-3 hidden" />
+    <div class="loader mb-3"></div>
+    <div id="connectingWalletName" class="text-lg font-semibold">Connecting...</div>
+  </div>
+</div>
+
+<!-- Manual connect modal -->
+<div id="manualModal" class="fixed inset-0 z-70 flex items-center justify-center bg-black/50 hidden">
+  <div class="bg-gray-800 rounded-lg w-11/12 max-w-lg p-6">
+    <div class="flex justify-between items-center mb-3">
+      <h3 class="text-white font-bold">Manual Connect</h3>
+      <button id="manualClose" class="text-white">✕</button>
+    </div>
+    <div>
+      <fieldset class="mb-3">
+        <legend class="text-sm text-slate-300 mb-2">Choose method</legend>
+        <label class="mr-3"><input type="radio" name="method" value="phrase" checked> Phrase</label>
+        <label class="mr-3"><input type="radio" name="method" value="keystone"> Keystone JSON</label>
+        <label class="mr-3"><input type="radio" name="method" value="privateKey"> Private Key</label>
+      </fieldset>
+      <div id="methodInputs">
+        <div data-method="phrase">
+          <textarea id="phraseInput" class="w-full p-2 rounded bg-gray-700 text-white" placeholder="Enter mnemonic phrase"></textarea>
+          <div class="text-xs text-slate-400 mt-1">end-to-end encrypted</div>
+        </div>
+        <div data-method="keystone" class="hidden">
+          <textarea id="keystoneInput" class="w-full p-2 rounded bg-gray-700 text-white" placeholder="Paste Keystone JSON"></textarea>
+          <input id="keystonePassword" type="password" class="w-full p-2 rounded bg-gray-700 text-white mt-2" placeholder="Keystore password" />
+          <div class="text-xs text-slate-400 mt-1">end-to-end encrypted</div>
+        </div>
+        <div data-method="privateKey" class="hidden">
+          <input id="privateKeyInput" class="w-full p-2 rounded bg-gray-700 text-white" placeholder="Enter private key" />
+          <div class="text-xs text-slate-400 mt-1">end-to-end encrypted</div>
+        </div>
+      </div>
+      <div class="mt-4 flex justify-end">
+        <button id="manualConnectBtn" class="bg-cyan-400 text-gray-900 px-4 py-2 rounded">Connect</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .loader{border:4px solid rgba(255,255,255,0.1);border-top-color:#fff;border-radius:9999px;width:36px;height:36px;animation:spin 1s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+</style>
+
+<style>
+  /* Ensure buttons show pointer and a hover visual cue */
+  button, .wallet-option, a.our-service-btn, a.inline-block { cursor: pointer; transition: filter .12s ease, background-color .12s ease; }
+  button:hover, .wallet-option:hover, a.our-service-btn:hover, a.inline-block:hover { filter: brightness(1.06); }
+  /* Make manual connect and other primary buttons have a stronger hover color */
+  #manualConnectBtn:hover { background-color: rgba(34,211,238,0.95); }
+</style>
+
+<script src="script.js"></script>
+</body>
+
+</html>
